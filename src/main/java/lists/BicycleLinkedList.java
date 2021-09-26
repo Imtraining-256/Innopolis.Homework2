@@ -27,17 +27,17 @@ public class BicycleLinkedList<E> implements List<E> {
 
     @Override
     public boolean contains(Object o) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Iterator<E> iterator() {
-        return new ListItr();
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -63,22 +63,22 @@ public class BicycleLinkedList<E> implements List<E> {
 
     @Override
     public boolean remove(Object o) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean addAll(int index, Collection<? extends E> c) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -88,12 +88,12 @@ public class BicycleLinkedList<E> implements List<E> {
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void clear() {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -104,12 +104,12 @@ public class BicycleLinkedList<E> implements List<E> {
 
     @Override
     public E set(int index, E element) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void add(int index, E element) {
-
+        throw new UnsupportedOperationException();
     }
 
     private void checkIndex(int index) {
@@ -160,12 +160,12 @@ public class BicycleLinkedList<E> implements List<E> {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        throw new UnsupportedOperationException();
     }
 
     @Override

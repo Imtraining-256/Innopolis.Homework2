@@ -6,12 +6,12 @@ public class BicycleArrayList<E> implements List<E> {
 
     private static final int DEFAULT_CAPACITY = 10;
 
-    transient Object[] elementData;
+    Object[] elementData;
 
     private int size;
 
     public BicycleArrayList() {
-        elementData = new Object[]{};
+        elementData = new Object[DEFAULT_CAPACITY];
     }
 
 
@@ -27,7 +27,7 @@ public class BicycleArrayList<E> implements List<E> {
 
     @Override
     public boolean contains(Object o) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -37,7 +37,7 @@ public class BicycleArrayList<E> implements List<E> {
 
     @Override
     public Object[] toArray() {
-        return new Object[0];
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -59,44 +59,44 @@ public class BicycleArrayList<E> implements List<E> {
         if (elementData.length > 0) {
             return elementData = Arrays.copyOf(elementData, oldSize * 3 / 2 + 1);
         } else {
-            return elementData = new Object[DEFAULT_CAPACITY];
+            return elementData;
         }
     }
 
     @Override
     public boolean remove(Object o) {
 
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean addAll(int index, Collection<? extends E> c) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
-        return false;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void clear() {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -108,12 +108,12 @@ public class BicycleArrayList<E> implements List<E> {
 
     @Override
     public E set(int index, E element) {
-        return null;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void add(int index, E element) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
@@ -128,7 +128,8 @@ public class BicycleArrayList<E> implements List<E> {
 
         E oldValue = (E) es[index];
 
-        if ((newSize = size - 1) > index)
+        newSize = size - 1;
+        if (newSize > index)
             System.arraycopy(es, index + 1, es, index, newSize - index);
         es[size = newSize] = null;
 
@@ -137,12 +138,12 @@ public class BicycleArrayList<E> implements List<E> {
 
     @Override
     public int indexOf(Object o) {
-        return 0;
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public int lastIndexOf(Object o) {
-        return 0;
+        throw new UnsupportedOperationException();
     }
 
     @Override
