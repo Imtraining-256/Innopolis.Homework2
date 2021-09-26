@@ -98,7 +98,8 @@ public class BicycleLinkedList<E> implements List<E> {
 
     @Override
     public E get(int index) {
-        return null;
+        checkIndex(index);
+        return listItem(index).item;
     }
 
     @Override
@@ -111,39 +112,50 @@ public class BicycleLinkedList<E> implements List<E> {
 
     }
 
+    private void checkIndex(int index) {
+        boolean isIndexExist = index >= 0 && index < size;
+        if (!isIndexExist) {
+            throw new IndexOutOfBoundsException();
+        }
+    }
+
+    private ListItem<E> listItem(int index) {
+        ListItem<E> x = first;
+        for (int i = 0; i < index; i++) {
+            x = x.next;
+        }
+        return x;
+    }
+
     @Override
     public E remove(int index) {
 
-        if (index >= 0 && index < size) {
-            ListItem<E> x = first;
-            for (int i = 0; i < index; i++) {
-                x = x.next;
-            }
+        checkIndex(index);
 
-            final E element = x.item;
-            final ListItem<E> next = x.next;
-            final ListItem<E> prev = x.prev;
+        var x = listItem(index);
 
-            if (prev == null) {
-                first = next;
-            } else {
-                prev.next = next;
-                x.prev = null;
-            }
+        final E element = x.item;
+        final ListItem<E> next = x.next;
+        final ListItem<E> prev = x.prev;
 
-            if (next == null) {
-                last = prev;
-            } else {
-                next.prev = prev;
-                x.next = null;
-            }
-
-            x.item = null;
-            size--;
-
-            return element;
+        if (prev == null) {
+            first = next;
+        } else {
+            prev.next = next;
+            x.prev = null;
         }
-        throw new IndexOutOfBoundsException();
+
+        if (next == null) {
+            last = prev;
+        } else {
+            next.prev = prev;
+            x.next = null;
+        }
+
+        x.item = null;
+        size--;
+
+        return element;
     }
 
     @Override
