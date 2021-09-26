@@ -12,7 +12,7 @@ public class BicycleLinkedList<E> implements List<E> {
 
     transient int size = 0;
 
-    BicycleLinkedList() {
+    public BicycleLinkedList() {
     }
 
     @Override
@@ -32,7 +32,7 @@ public class BicycleLinkedList<E> implements List<E> {
 
     @Override
     public Iterator<E> iterator() {
-        throw new UnsupportedOperationException();
+        return new ListItr();
     }
 
     @Override
@@ -183,17 +183,32 @@ public class BicycleLinkedList<E> implements List<E> {
         throw new UnsupportedOperationException();
     }
 
-    private class ListItem<T> {
+    private class ListItem<E> {
 
-        T item;
+        E item;
 
-        ListItem<T> prev;
-        ListItem<T> next;
+        ListItem<E> prev;
+        ListItem<E> next;
 
-        public ListItem(ListItem<T> prev, T item, ListItem<T> next) {
+        public ListItem(ListItem<E> prev, E item, ListItem<E> next) {
             this.prev = prev;
             this.item = item;
             this.next = next;
+        }
+    }
+
+    private class ListItr implements Iterator<E> {
+
+        int index = 0;
+
+        @Override
+        public boolean hasNext() {
+            return index != size;
+        }
+
+        @Override
+        public E next() {
+            return listItem(index++).item;
         }
     }
 }
